@@ -14,10 +14,7 @@ pipeline {
                 echo "Branch: ${GIT_BRANCH}    Commit: ${GIT_COMMIT}"
                 echo "Jenkins node: ${NODE_NAME}    Build tag: ${BUILD_TAG}"
                 echo "Jenkins workspace: ${WORKSPACE}"
-                dir("./") {
-                    // Build and start dev
-                    sh 'docker-compose docker-compose.yml up -d'
-                }
+                sh 'docker-compose docker-compose.yml up -d'
             }
         }
         stage('Test') {
