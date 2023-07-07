@@ -15,7 +15,7 @@ pipeline {
                 echo "Jenkins node: ${NODE_NAME}    Build tag: ${BUILD_TAG}"
                 echo "Jenkins workspace: ${WORKSPACE}"
                 sh 'ls -al'
-                sh 'docker-compose docker-compose.yml up -d'
+                sh 'docker-compose up -d'
             }
         }
         stage('Test') {
