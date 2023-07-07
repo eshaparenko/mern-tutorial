@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    stages {
+        stage('Preparation') {
+
+        }
+        stage('Build and run dev') {
+            // steps {
+            //     echo "Branch: ${GIT_BRANCH}    Commit: ${GIT_COMMIT}"
+            //     echo "Jenkins node: ${NODE_NAME}    Build tag: ${BUILD_TAG}"
+            //     echo "Jenkins workspace: ${WORKSPACE}"
+            //     dir("./app") {
+            //         // Build and start dev
+            //         sh 'docker-compose -f docker-compose.dev.yml up -d --build'
+            //     }
+            // }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
