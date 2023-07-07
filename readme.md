@@ -3,10 +3,7 @@
 This is the goalsetter app from the [Learn the MERN Stack](https://www.youtube.com/watch?v=-0exw-9YJBo) series on YouTube.
 
 ## Usage
-
-Rename the .envexample to .env and add your MONGO_URI
-
-### Install dependencies
+## Install dependencies
 
 ```
 # Backend deps
@@ -22,9 +19,39 @@ npm install
 ```
 npm run server
 ```
+## Run in docker containers
 
-## Demo
+```
+git clone https://github.com/eshaparenko/jenkins-docker.git
+```
+```
+cd mern-tutorial
+```
+```
+docker build -t back:latest .
+```
+```
+cd frontend
+``` 
+```
+docker build -t front:latest .
+```
+#Create network
+```
+docker network create mern-net
+```
+```
+#Run mongodb container
 
-I am not sure how long this will be up
+docker run --name mongodb -v mongo-volume:/data/db --rm -d --network mern-net mongo
 
-https://mernappbrad.herokuapp.com/
+#Run backend server
+
+docker run -v back-volume:/app -v /app/node_modules --name mern-backend -d -p 5000:5000 --network mern-net back:latest
+
+#Run frontend server
+
+docker run -v front-volume:/app/src -d -p 3000:3000 --network mern-net --name mern-front front:latest
+```
+
+Navigate: localhost:3000
