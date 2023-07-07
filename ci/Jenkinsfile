@@ -6,19 +6,19 @@ pipeline {
                 echo 'Preparation..'
             }
         }
-        stage('Build and run dev') {
-            steps {
-                echo 'Build..'
-            }
+        stage('Build and run app') {
             // steps {
-            //     echo "Branch: ${GIT_BRANCH}    Commit: ${GIT_COMMIT}"
-            //     echo "Jenkins node: ${NODE_NAME}    Build tag: ${BUILD_TAG}"
-            //     echo "Jenkins workspace: ${WORKSPACE}"
-            //     dir("./app") {
-            //         // Build and start dev
-            //         sh 'docker-compose -f docker-compose.dev.yml up -d --build'
-            //     }
+            //     echo 'Build..'
             // }
+            steps {
+                echo "Branch: ${GIT_BRANCH}    Commit: ${GIT_COMMIT}"
+                echo "Jenkins node: ${NODE_NAME}    Build tag: ${BUILD_TAG}"
+                echo "Jenkins workspace: ${WORKSPACE}"
+                dir("./app") {
+                    // Build and start dev
+                    sh 'docker-compose docker-compose.yml up -d'
+                }
+            }
         }
         stage('Test') {
             steps {
