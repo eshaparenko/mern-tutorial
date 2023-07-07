@@ -47,11 +47,18 @@ docker run --name mongodb -v mongo-volume:/data/db --rm -d --network mern-net mo
 
 #Run backend server
 
-docker run -v back-volume:/app -v /app/node_modules --name mern-backend -d -p 5000:5000 --network mern-net back:latest
+docker run -v back-volume:/app -v /app/node_modules --name mern-backend --rm -d -p 5000:5000 --network mern-net back:latest
 
 #Run frontend server
 
-docker run -v front-volume:/app/src -d -p 3000:3000 --network mern-net --name mern-front front:latest
+docker run -v front-volume:/app/src -d --rm -p 3000:3000 --network mern-net --name mern-front front:latest
 ```
 
 Navigate: localhost:3000
+
+
+## Docker compose
+
+```
+docker compose up -d
+```
