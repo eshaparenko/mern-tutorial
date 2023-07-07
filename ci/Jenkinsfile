@@ -7,14 +7,10 @@ pipeline {
             }
         }
         stage('Build and run app') {
-            // steps {
-            //     echo 'Build..'
-            // }
             steps {
                 echo "Branch: ${GIT_BRANCH}    Commit: ${GIT_COMMIT}"
                 echo "Jenkins node: ${NODE_NAME}    Build tag: ${BUILD_TAG}"
                 echo "Jenkins workspace: ${WORKSPACE}"
-                sh 'ls -al'
                 sh 'docker-compose up -d'
             }
         }
