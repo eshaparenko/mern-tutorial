@@ -7,6 +7,9 @@ pipeline {
             }
         }
         stage('Build and run dev') {
+            steps {
+                echo 'Build..'
+            }
             // steps {
             //     echo "Branch: ${GIT_BRANCH}    Commit: ${GIT_COMMIT}"
             //     echo "Jenkins node: ${NODE_NAME}    Build tag: ${BUILD_TAG}"
