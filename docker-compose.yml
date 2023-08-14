@@ -13,11 +13,22 @@ services:
     volumes:
       - mongo-volume:/data/db
 
+  mongo-express:
+    image: 'mongo-express'
+    container_name: mongo-express
+    ports:
+      - "8081:8081"
+    environment: 
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+
   frontend:
     build: ./frontend
     container_name: mern-front
     ports:
-      - "3000:3000"
+      - "8088:3000"
     volumes:
       - front-volume:/app
       - /app/node_modules

@@ -54,6 +54,15 @@ docker run -v back-volume:/app -v /app/node_modules --name mern-backend --rm -d 
 docker run -v front-volume:/app/src -d --rm -p 3000:3000 --network mern-net --name mern-front front:latest
 ```
 
+#Run Mongo Express
+docker run -it --rm \
+    --network mern-net \
+    --name mongo-express \
+    -p 8081:8081 \
+    -e ME_CONFIG_OPTIONS_EDITORTHEME="ambiance" \
+    -e ME_CONFIG_MONGODB_SERVER=“mongodb \
+    mongo-express
+
 Navigate: localhost:3000
 
 
